@@ -19,6 +19,8 @@ extension MainTableViewCellDelegate {
 // MARK: - Property
 class MainTableViewCell: BaseTableViewCell {
     weak var delegate: MainTableViewCellDelegate? = nil
+    @IBOutlet weak var leftLabel: UILabel!
+    @IBOutlet weak var centerLabel: UILabel!
 }
 
 // MARK: - Life cycle

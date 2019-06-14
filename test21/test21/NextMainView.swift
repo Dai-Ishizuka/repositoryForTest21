@@ -10,6 +10,7 @@ import UIKit
 import PGFramework
 
 protocol NextMainViewDelegate: NSObjectProtocol{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) 
     
 }
 
@@ -28,12 +29,26 @@ extension NextMainView {
         super.awakeFromNib()
         loadTableViewCellFromXib(tableView: tableView, cellName: "MainTableViewCell")
         tableView.dataSource = self
+        tableView.delegate = self
     }
     
 }
 
 // MARK: - Protocol
 extension NextMainView: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "セクション"
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
@@ -44,9 +59,16 @@ extension NextMainView: UITableViewDataSource {
         }
         return cell
     }
+}
+
+extension NextMainView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.tableView(tableView, didSelectRowAt: indexPath)
+    }
     
     
 }
+
 
 // MARK: - method
 extension NextMainView {
