@@ -18,11 +18,20 @@ class TopViewController: BaseViewController {
 
 // MARK: - Life cycle
 extension TopViewController {
+    override func loadView() {
+        super.loadView()
+        topMainView.delegate = self
+    }
     
 }
 
 // MARK: - Protocol
-extension TopViewController {
+extension TopViewController: TopMainViewDelegate {
+    func button() {
+        let next: NextViewController = NextViewController()
+        transitionViewController(from: self, to: next)
+    }
+    
     
 }
 
