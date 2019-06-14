@@ -10,7 +10,7 @@ import UIKit
 import PGFramework
 
 protocol TopMainViewDelegate: NSObjectProtocol{
-    
+    func button()
 }
 
 extension TopMainViewDelegate {
@@ -19,6 +19,9 @@ extension TopMainViewDelegate {
 // MARK: - Property
 class TopMainView: BaseView {
     weak var delegate: TopMainViewDelegate? = nil
+    @IBAction func touchedBtn(_ sender: UIButton) {
+        delegate?.button()
+    }
 }
 
 // MARK: - Life cycle
