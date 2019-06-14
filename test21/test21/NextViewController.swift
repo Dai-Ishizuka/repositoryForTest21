@@ -17,11 +17,18 @@ class NextViewController: BaseViewController {
 
 // MARK: - Life cycle
 extension NextViewController {
-    
+    override func loadView() {
+        super.loadView()
+        nextMainView.delegate = self
+    }
 }
 
 // MARK: - Protocol
-extension NextViewController {
+extension NextViewController: NextMainViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.popViewController(animated: true)
+    }
+    
     
 }
 
